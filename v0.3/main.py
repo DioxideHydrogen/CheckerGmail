@@ -37,7 +37,7 @@ def main():
 
             # Call the Gmail API to fetch INBOX
 
-            results = service.users().messages().list(userId='me', labelIds=['INBOX', 'UNREAD'], maxResults=2).execute() #Atualização 0.2 -> include "CATEGORY_PERSONAL" at labelIds, but have problems with this Id, so in v0.3 -> I put q="category:primary", and now the script only get main menssages of the Inbox of the gmail.
+            results = service.users().messages().list(userId='me', labelIds=['INBOX', 'UNREAD'], maxResults=2, q="category:primary").execute() #Atualização 0.2 -> include "CATEGORY_PERSONAL" at labelIds, but have problems with this Id, so in v0.3 -> I put q="category:primary", and now the script only get main menssages of the Inbox of the gmail.
             messages = results.get('messages', [])
 
             if not messages:
